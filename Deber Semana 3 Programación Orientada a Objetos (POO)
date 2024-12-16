@@ -1,90 +1,91 @@
-class DailyWeather:
-    def __init__(self, day):
-        self.__day = day  # Día de la semana (atributo privado)
-        self.__temperature = None  # Temperatura en grados Celsius
-        self.__humidity = None  # Humedad en porcentaje
-        self.__rainfall = None  # Precipitación en mm
+class ClimaDiario:
+    def __init__(self, dia):
+        self.__dia = dia  # Día de la semana (atributo privado)
+        self.__temperatura = None  # Temperatura en grados Celsius
+        self.__humedad = None  # Humedad en porcentaje
+        self.__precipitacion = None  # Precipitación en mm
 
     # Métodos para establecer los datos del clima
-    def set_weather_data(self, temperature, humidity, rainfall):
-        self.__temperature = temperature
-        self.__humidity = humidity
-        self.__rainfall = rainfall
+    def establecer_datos_clima(self, temperatura, humedad, precipitacion):
+        self.__temperatura = temperatura
+        self.__humedad = humedad
+        self.__precipitacion = precipitacion
 
     # Métodos para obtener los datos
-    def get_temperature(self):
-        return self.__temperature
+    def obtener_temperatura(self):
+        return self.__temperatura
 
-    def get_humidity(self):
-        return self.__humidity
+    def obtener_humedad(self):
+        return self.__humedad
 
-    def get_rainfall(self):
-        return self.__rainfall
+    def obtener_precipitacion(self):
+        return self.__precipitacion
 
-    def get_day(self):
-        return self.__day
+    def obtener_dia(self):
+        return self.__dia
 
 
-class WeeklyWeather:
+class ClimaSemanal:
     def __init__(self):
-        self.__daily_data = []  # Lista para almacenar la información diaria
+        self.__datos_diarios = []  # Lista para almacenar la información diaria
 
     # Método para agregar información diaria
-    def add_daily_weather(self, daily_weather):
-        if isinstance(daily_weather, DailyWeather):
-            self.__daily_data.append(daily_weather)
+    def agregar_clima_diario(self, clima_diario):
+        if isinstance(clima_diario, ClimaDiario):
+            self.__datos_diarios.append(clima_diario)
 
     # Método para calcular el promedio semanal de temperatura, humedad y lluvia
-    def calculate_weekly_averages(self):
-        total_temp = total_humidity = total_rainfall = 0
-        count = len(self.__daily_data)
-        if count == 0:
-            return "No data available."
+    def calcular_promedios_semanales(self):
+        total_temp = total_humedad = total_precipitacion = 0
+        cantidad = len(self.__datos_diarios)
+        if cantidad == 0:
+            return "No hay datos disponibles."
 
-        for daily_weather in self.__daily_data:
-            total_temp += daily_weather.get_temperature()
-            total_humidity += daily_weather.get_humidity()
-            total_rainfall += daily_weather.get_rainfall()
+        for clima_diario in self.__datos_diarios:
+            total_temp += clima_diario.obtener_temperatura()
+            total_humedad += clima_diario.obtener_humedad()
+            total_precipitacion += clima_diario.obtener_precipitacion()
 
         return {
-            "average_temperature": total_temp / count,
-            "average_humidity": total_humidity / count,
-            "average_rainfall": total_rainfall / count,
+            "promedio_temperatura": total_temp / cantidad,
+            "promedio_humedad": total_humedad / cantidad,
+            "promedio_precipitacion": total_precipitacion / cantidad,
         }
 
     # Método para mostrar datos diarios
-    def display_weekly_data(self):
-        for daily_weather in self.__daily_data:
+    def mostrar_datos_semanales(self):
+        for clima_diario in self.__datos_diarios:
             print(
-                f"{daily_weather.get_day()}: Temp: {daily_weather.get_temperature()}°C, "
-                f"Humidity: {daily_weather.get_humidity()}%, Rainfall: {daily_weather.get_rainfall()}mm"
+                f"{clima_diario.obtener_dia()}: Temp: {clima_diario.obtener_temperatura()}°C, "
+                f"Humedad: {clima_diario.obtener_humedad()}%, Precipitación: {clima_diario.obtener_precipitacion()}mm"
             )
 
 
 # Ejemplo de uso
 # Crear objetos para los días de la semana
-monday = DailyWeather("Monday")
-monday.set_weather_data(25, 60, 5)
+lunes = ClimaDiario("Lunes")
+lunes.establecer_datos_clima(25, 60, 5)
 
-tuesday = DailyWeather("Tuesday")
-tuesday.set_weather_data(28, 55, 0)
+martes = ClimaDiario("Martes")
+martes.establecer_datos_clima(28, 55, 0)
 
-wednesday = DailyWeather("Wednesday")
-wednesday.set_weather_data(22, 65, 10)
+miercoles = ClimaDiario("Miércoles")
+miercoles.establecer_datos_clima(22, 65, 10)
 
 # Crear el objeto semanal y agregar los días
-weekly_weather = WeeklyWeather()
-weekly_weather.add_daily_weather(monday)
-weekly_weather.add_daily_weather(tuesday)
-weekly_weather.add_daily_weather(wednesday)
+clima_semanal = ClimaSemanal()
+clima_semanal.agregar_clima_diario(lunes)
+clima_semanal.agregar_clima_diario(martes)
+clima_semanal.agregar_clima_diario(miercoles)
 
 # Mostrar los datos diarios
-print("Daily Weather Data:")
-weekly_weather.display_weekly_data()
+print("Datos del Clima Diario:")
+clima_semanal.mostrar_datos_semanales()
 
 # Calcular y mostrar los promedios semanales
-averages = weekly_weather.calculate_weekly_averages()
-print("\nWeekly Averages:")
-print(f"Average Temperature: {averages['average_temperature']}°C")
-print(f"Average Humidity: {averages['average_humidity']}%")
-print(f"Average Rainfall: {averages['average_rainfall']}mm")
+promedios = clima_semanal.calcular_promedios_semanales()
+print("\nPromedios Semanales:")
+print(f"Promedio de Temperatura: {promedios['promedio_temperatura']}°C")
+print(f"Promedio de Humedad: {promedios['promedio_humedad']}%")
+print(f"Promedio de Precipitación: {promedios['promedio_precipitacion']}mm")
+
