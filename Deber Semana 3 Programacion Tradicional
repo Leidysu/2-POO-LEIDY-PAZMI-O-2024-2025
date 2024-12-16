@@ -1,1 +1,38 @@
+# Programación Tradicional
+# Ejemplo: Gestión de un robot de limpieza
 
+# Definición de variables globales
+battery_level = 100  # Nivel de batería en porcentaje
+cleaned_area = 0  # Área limpiada en metros cuadrados
+cleaning_speed = 5  # Velocidad de limpieza en m²/minuto
+
+
+# Función para cargar la batería
+def charge_battery(amount):
+    global battery_level
+    battery_level += amount
+    if battery_level > 100:
+        battery_level = 100  # No puede superar el 100%
+
+
+# Función para limpiar el área
+def clean(area):
+    global battery_level, cleaned_area, cleaning_speed
+    time_needed = area / cleaning_speed  # Tiempo necesario en minutos
+    battery_needed = time_needed * 2  # Supongamos que se usan 2% de batería por minuto de limpieza
+
+    if battery_needed <= battery_level:
+        battery_level -= battery_needed
+        cleaned_area += area
+        print("Cleaning:", area, "square meters")
+    else:
+        print("Not enough battery to clean that area.")
+
+
+# Uso de las funciones en la programación tradicional
+charge_battery(50)
+clean(20)
+
+# Imprimir el área limpiada y el nivel de batería restante
+print("Cleaned Area (Traditional):", cleaned_area)
+print("Battery Level (Traditional):", battery_level)
