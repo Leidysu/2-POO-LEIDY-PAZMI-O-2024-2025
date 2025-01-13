@@ -1,0 +1,70 @@
+# Programa para calcular el área de diferentes figuras geométricas
+# Este programa permite al usuario calcular el área de un triángulo, un círculo o un rectángulo.
+# Utiliza diferentes tipos de datos como integer, float, string y boolean para manejar las entradas y cálculos.
+
+import math
+
+def calcular_area_triangulo(base, altura):
+    """
+    Calcula el área de un triángulo.
+    :param base: Base del triángulo (float).
+    :param altura: Altura del triángulo (float).
+    :return: Área del triángulo (float).
+    """
+    return (base * altura) / 2
+
+def calcular_area_circulo(radio):
+    """
+    Calcula el área de un círculo.
+    :param radio: Radio del círculo (float).
+    :return: Área del círculo (float).
+    """
+    return math.pi * (radio ** 2)
+
+def calcular_area_rectangulo(base, altura):
+    """
+    Calcula el área de un rectángulo.
+    :param base: Base del rectángulo (float).
+    :param altura: Altura del rectángulo (float).
+    :return: Área del rectángulo (float).
+    """
+    return base * altura
+
+def main():
+    """
+    Función principal que permite al usuario elegir una figura y calcular su área.
+    """
+    print("Bienvenido al programa de cálculo de áreas")
+    print("Elija una figura para calcular su área:")
+    print("1. Triángulo")
+    print("2. Círculo")
+    print("3. Rectángulo")
+
+    # Leer opción del usuario
+    opcion = int(input("Ingrese el número de la figura deseada: "))
+
+    if opcion == 1:
+        # Calcular área de un triángulo
+        base = float(input("Ingrese la base del triángulo: "))
+        altura = float(input("Ingrese la altura del triángulo: "))
+        area = calcular_area_triangulo(base, altura)
+        print(f"El área del triángulo es: {area:.2f}")
+
+    elif opcion == 2:
+        # Calcular área de un círculo
+        radio = float(input("Ingrese el radio del círculo: "))
+        area = calcular_area_circulo(radio)
+        print(f"El área del círculo es: {area:.2f}")
+
+    elif opcion == 3:
+        # Calcular área de un rectángulo
+        base = float(input("Ingrese la base del rectángulo: "))
+        altura = float(input("Ingrese la altura del rectángulo: "))
+        area = calcular_area_rectangulo(base, altura)
+        print(f"El área del rectángulo es: {area:.2f}")
+
+    else:
+        print("Opción no válida. Por favor, reinicie el programa y elija una opción correcta.")
+
+if __name__ == "__main__":
+    main()
