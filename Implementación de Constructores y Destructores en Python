@@ -1,0 +1,51 @@
+class Bicicleta:
+    def __init__(self, marca, modelo, color):
+        """
+        Constructor de la clase Bicicleta.
+        Inicializa los atributos marca, modelo y color.
+        """
+        self.marca = marca
+        self.modelo = modelo
+        self.color = color
+
+    def pedalear(self):
+        """
+        Método para simular el inicio del pedaleo de la bicicleta.
+        """
+        print(f"La bicicleta {self.marca} {self.modelo} de color {self.color} está en movimiento.")
+
+    def informacion(self):
+        """
+        Método para mostrar la información de la bicicleta.
+        """
+        print(f"Datos Informativos de la bicicleta: {self.marca} {self.modelo} color {self.color}.")
+
+# Creación de objetos
+mi_bicicleta = Bicicleta("Giant", "Talon 3", "Negro")
+mi_bicicleta.pedalear()
+
+bicicleta_ana = Bicicleta("Trek", "Marlin 5", "Rojo")
+bicicleta_ana.informacion()
+
+
+def __del__(self):
+    """
+    Destructor de la clase Bicicleta.
+    """
+    print(f"La bicicleta {self.marca} {self.modelo} de color {self.color} ha sido eliminada.")
+
+
+# Creación de objetos
+mi_bicicleta = Bicicleta("Giant", "Talon 3", "Negro")
+mi_bicicleta.pedalear()
+
+bicicleta_ana = Bicicleta("Trek", "Marlin 5", "Rojo")
+bicicleta_ana.informacion()
+
+
+def __del__(self):
+    """
+    Destructor de la clase Bicicleta.
+       """
+    print(f"Liberando recursos de la bicicleta {self.marca} {self.modelo} de color {self.color}...")
+    print(f"La bicicleta {self.marca} {self.modelo} de color {self.color} ha sido eliminada correctamente.")
